@@ -1,4 +1,5 @@
 CREATE OR ALTER PROCEDURE SP_OBTENER_TRABAJADORES
+	 @Nombre VARCHAR(150)
 AS
 BEGIN
     SELECT
@@ -17,6 +18,7 @@ BEGIN
     INNER JOIN dbo.Departamento AS DE ON T.IdDepartamento = DE.Id
     INNER JOIN dbo.Provincia AS P ON T.IdProvincia = P.Id
     INNER JOIN dbo.Distrito AS DI ON T.IdDistrito = DI.Id
-END
+	WHERE T.Nombres LIKE '%'+ @Nombre +'%'
+END;
 
-EXEC SP_OBTENER_TRABAJADORES
+EXEC SP_OBTENER_TRABAJADORES '';
